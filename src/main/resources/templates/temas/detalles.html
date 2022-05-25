@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/scripts/bootstrap.bundle.min.js"></script>
+	<script src="/scripts/jquery-3.6.0.min.js"></script>
+    <title>Detalle Replicas - Foro</title>
+</head>
+<body>
+  <div class="container bg-light p-5">
+        <div class="jumbotron">
+            <h1 class="display-4">
+                Replicas
+            </h1>
+            <p class="lead">
+                Esta vista es para mostrar las replicas de los temas.
+            </p>
+            <hr class="my-4">
+            <p>
+                Ingresa los datos solicitados*
+            </p>
+            <div>   
+         	    
+		<div class="row">
+		
+		    <div class="col-md-3"></div>		   
+		    <div class="col-md-6">
+		    <div th:if="*{error !=null}" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" label="Close">&times;</button>
+            <h4 th:text=*{error}></h4>
+            </div> 
+            	  <!-- (Inicio) Aca ira la tabla -->
+               <div th:if="*{replicas != null}">
+               		<div th:each= "replica : ${replicas}" class="card bg-ligth bg-opacity-30 text-center">
+               			<h5 th:text="${replica.contenido}"></h5>
+               			<label th:text="'Enviado por: '+${replica.usuario.alias}"></label>
+               		</div>
+               </div>
+               
+               
+                <!--(Fin) Tabla-->
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <br>
+        <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 shadow-lg p-3 mb-5 mt-4 bg-body rounded">
+        <form action="#" th:action="@{/temas/agregarreplica}" th:object="${replica}" method="post" class="row g-3 needs-validation" novalidate>
+                    <fieldset>
+                        <legend class="text-center"><strong>Responder.......</strong></legend>
+
+                        <textarea cols="50" rows="4" required="required" th:field="*{contenido}" class="form-control" placeholder="Maximo 200 caracteres"></textarea>
+                        <input type="hidden" th:field="*{tema}">
+                        <br />
+
+                        <p style="text-align: center;">
+                            <input type="submit" class=" btn btn-primary" value="Comentar" />
+                        </p>
+                    </fieldset>
+                </form>
+        </div>
+        <div class="col-3"></div>
+        </div>
+		    </div>
+		    <div class="col-md-3"></div>
+		</div>
+
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="row">
+                    <div class="col-2"> </div>
+                        <div class="col-8">
+                            <p>Desarrollo Web Avanzado</p>
+                            <p>ITSSNP 2022</p>
+                            <p>Armando Joel Rodriguez Sanchez</p>
+                        </div>
+                        <div class="col-2"></div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

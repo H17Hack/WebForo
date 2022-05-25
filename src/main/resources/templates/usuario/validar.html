@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/scripts/bootstrap.bundle.min.js"></script>
+	<script src="/scripts/jquery-3.6.0.min.js"></script>      
+    <title>Validar</title>
+</head>
+<body style="background-color: rgb(255, 128, 64);">
+    
+    
+
+    <!-- (Fin) Menu de pagina -->
+    <!-- (Inicio) Titular de Pagina -->
+    <div class="container-fluid" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+        <h1 class="text-center">Foro Desarollo web</h1>
+        
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-3 text-center">
+                <figure class="figure">
+                    
+                </figure>
+            </div>
+            <div class="col-6">
+            <div th:if="*{error !=null}" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 th:text=*{error}></h4>
+            </div>
+            
+                <form action="#" th:action="@{/usuario/validar}" method="post">
+                    <fieldset>
+                        <legend>Inicio de Sesion</legend>
+
+                        <label for="Correo" class="form-label">Correo Electronico</label>
+                        <input type="email" required="required" th:value="*{correoe}" name="correoe" class="form-control" placeholder="esau@hotmail.es">
+                        <br />
+
+                        <label for="inputPassword5" class="form-label">Password</label>
+                        <input type="password" required="required" th:value="*{clave}" name="clave" class="form-control" aria-describedby="passwordHelpBlock" placeholder="*******">
+                        <br> <br>
+
+                        <p style="text-align: center;">
+                            <input type="submit" class=" btn btn-primary" value="Validar" />
+                                                        <a class="nav-link active" aria-current="page" href="@{/usuario/agregar}">Registrar</a>
+
+                        </p>
+                        
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- (Fin) Contenido de la pagina -->
+
+</body>
+</html>

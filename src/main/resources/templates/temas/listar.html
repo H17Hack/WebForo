@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/scripts/bootstrap.bundle.min.js"></script>
+	<script src="/scripts/jquery-3.6.0.min.js"></script>
+    <title>Listar Temas - Foro</title>
+</head>
+<body>
+  <div class="container bg-light p-5">
+        <div class="jumbotron">
+            <h1 class="display-4">
+                Listado de Temas
+            </h1>
+            <p class="lead">
+                Esta vista es para listar los temas de este foro.
+            </p>
+            <hr class="my-4">
+            <p>
+                Temas de este foro encontrados.
+            </p>
+            <div>         	    
+		
+		       	<div class="container">
+        <div class="row">
+        <div class="col-2"></div>
+            <div class="col-8">
+            
+            <div th:if="*{error !=null}" class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" label="Close">&times;</button>
+            <h4 th:text=*{error}></h4>
+            </div>
+            
+                <!-- (Inicio) Aca ira la tabla -->
+               <div th:if="*{temas != null}">
+               		<div th:each= "tema : ${temas}" class="card mb-2 bg-info text-white bg-opacity-50 text-center">
+               			<h3><a th:href="'/temas/detalles/' + ${tema.id}" th:text="${tema.titulo}"></a></h3>
+               			<h6 th:text="${tema.descripcion}"></h6>
+               			<label th:text="'Creado por: '+${tema.usuario.nombre}"></label>
+               		</div>
+               </div>
+                <!--(Fin) Tabla-->
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <br>
+        <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 shadow-lg p-3 mb-5 mt-4 bg-body rounded">
+        <form action="#" th:action="@{/temas/agregar}" th:object="${tema}" method="post" class="row g-3 needs-validation" novalidate>
+                    <fieldset>
+                        <legend class="text-center"><strong>Registro de Nuevos Temas</strong></legend>
+
+                        <label for="tema" class="form-label"><em>Titulo del tema:</em></label>
+                        <input type="text" required="required" th:field="*{titulo}" class="form-control" placeholder="MVC en Spring">
+                        <br />
+
+                        <label for="Descripcion" class="form-label"><em>Descripcion:</em></label>
+                        <textarea cols="50" rows="4" required="required" th:field="*{descripcion}" class="form-control" placeholder="Maximo 200 caracteres"></textarea>
+                        <br />
+
+                        <p style="text-align: center;">
+                            <input type="submit" class=" btn btn-primary" value="Agregar" />
+                        </p>
+                    </fieldset>
+                </form>
+        </div>
+        <div class="col-3"></div>
+        </div>
+    </div>
+		 
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="row">
+                    <div class="col-2"> </div>
+                        <div class="col-8">
+                            <p>Desarrollo Web Avanzado</p>
+                            <p>ITSSNP 2022</p>
+                            <p>Armando Joel Rodriguez Sanchez</p>
+                        </div>
+                        <div class="col-2"></div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

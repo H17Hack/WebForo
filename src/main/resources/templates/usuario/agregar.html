@@ -1,0 +1,84 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+   <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/scripts/bootstrap.bundle.min.js"></script>
+	<script src="/scripts/jquery-3.6.0.min.js"></script>
+    <title>Registro - Foro</title>
+</head>
+<body style="background-color: rgb(255, 128, 64);"><body>
+  <div class="container bg-light p-5">
+        <div class="jumbotron">
+            <h1 class="display-4">
+                Registro de Usuarios
+            </h1>
+            <p class="lead">
+                Esta vista es para regitrarse en este foro.
+            </p>
+            <hr class="my-4">
+            <p>
+                Ingresa los datos solicitados*
+            </p>
+            <div>   
+         	    
+		<div class="row">
+		
+		    <div class="col-md-3"></div>		   
+		    <div class="col-md-6">
+		    <div th:if="*{error !=null}" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" label="Close">&times;</button>
+            <h4 th:text=*{error}></h4>
+            </div>         
+		       	<form action="#" th:action="@{agregar}" th:object="${usuario}" method="post">
+                    <fieldset>
+                        <legend>Registro de Usuarios</legend>
+
+                        <label for="Alias" class="form-label">Alias:</label>
+                        <input type="text" required="required" th:field="*{alias}" 
+                        class="form-control" placeholder="Alias" maxlength="15">
+                        <br />
+
+                        <label for="Nombre" class="form-label">Nombre:</label>
+                        <input type="text" required="required" th:field="*{nombre}" class="form-control" placeholder="Nombre Completo">
+                        <br />
+                        
+                        <label for="Correo" class="form-label">Correo Electronico</label>
+                        <input type="email" required="required" th:value="*{correoe}" name="correoe" class="form-control" placeholder="ejemplo@hotmail.es">
+                        <br />
+                        
+                        <label for="inputPassword5" class="form-label">Password</label>
+                        <input type="password" required="required" name="clave" class="form-control" aria-describedby="passwordHelpBlock" placeholder="*******">
+                        <br> <br>
+
+                        <p style="text-align: center;">
+                            <input type="submit" class=" btn btn-primary" value="Agregar" />
+                        </p>
+                    </fieldset>
+                </form>               
+           
+		    <div class="col-md-3"></div>
+		</div>
+
+            </div>
+            <hr class="my-4">
+            <div>
+                <div class="row">
+                    <div class="col-2"> </div>
+                        <div class="col-8">
+                            <p>Desarrollo Web Avanzado</p>
+                            <p>ITSSNP 2022</p>
+                            <p>Esau De Los Santos Popoca</p>
+                        </div>
+                        <div class="col-2"></div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
